@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap');
+
+:root {
+  /* Soft Cute Theme Colors */
+  --bg-primary: #fef7ff;
+  --bg-secondary: #fff9f9;
+  --bg-tertiary: #fff5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+
+  /* Cute Pastel Palette */
+  --color-pink: #ffb6c1;
+  --color-light-pink: #ffedf5;
+  --color-blue: #a8d8ff;
+  --color-light-blue: #e6f3ff;
+  --color-yellow: #ffeb99;
+  --color-light-yellow: #fff9e6;
+  --color-green: #c3e6cb;
+  --color-light-green: #ebf8ef;
+  --color-purple: #e6d1ff;
+  --color-light-purple: #f5f0ff;
+
+  /* Component Colors */
+  --primary-gradient: linear-gradient(135deg, #ff9eb5 0%, #ffa8cc 100%);
+  --card-shadow: 0 8px 32px rgba(255, 182, 193, 0.15);
+  --hover-shadow: 0 12px 40px rgba(255, 182, 193, 0.25);
+  --button-shadow: 0 4px 16px rgba(255, 182, 193, 0.2);
+
+  /* Spacing */
+  --radius-xl: 24px;
+  --radius-lg: 20px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+
+  /* Animation */
+  --transition-soft: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-bouncy: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure all interactive elements are clickable */
+a, button, .clickable, [onclick], [click], .nav-item, .logo {
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-pink);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-pink);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8fa3;
+}
+
+/* Utility Classes */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: var(--transition-bouncy);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Cute Button Styles */
+.btn-cute {
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  box-shadow: var(--button-shadow);
+  transition: var(--transition-bouncy);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cute::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-cute:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-cute:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4);
+}
+
+/* Pet Card Styles */
+.pet-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-bouncy);
+  position: relative;
+  overflow: hidden;
+}
+
+.pet-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--primary-gradient);
+  opacity: 0.3;
+}
+
+.pet-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--hover-shadow);
+}
+
+.pet-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-light-pink);
+  box-shadow: 0 4px 16px rgba(255, 182, 193, 0.3);
+  transition: var(--transition-bouncy);
+}
+
+.pet-avatar:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Cute Icons */
+.cute-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-light-pink);
+  color: var(--color-pink);
+  font-size: 24px;
+  transition: var(--transition-bouncy);
+}
+
+.cute-icon:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bouncing {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Wobble Animation */
+@keyframes wobble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+.wobbling {
+  animation: wobble 1s ease-in-out infinite;
+}
+
+/* Badge Styles */
+.badge-cute {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--color-light-pink);
+  color: #ff6b95;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+}
+
+/* Heart Animation */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.heart-beat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Sparkles Animation */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sparkle {
+  position: relative;
+}
+
+.sparkle::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Cute Input Styles */
+.input-cute {
+  background: var(--bg-secondary);
+  border: 2px solid var(--color-light-pink);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  font-size: 16px;
+  transition: var(--transition-soft);
+  width: 100%;
+}
+
+.input-cute:focus {
+  outline: none;
+  border-color: var(--color-pink);
+  background: white;
+  box-shadow: 0 0 0 4px var(--color-light-pink);
+}
+
+/* Cute Card Variants */
+.card-gradient-pink {
+  background: linear-gradient(135deg, #ffebf5 0%, #fff0f6 100%);
+}
+
+.card-gradient-blue {
+  background: linear-gradient(135deg, #e6f3ff 0%, #f0f9ff 100%);
+}
+
+.card-gradient-yellow {
+  background: linear-gradient(135deg, #fff9e6 0%, #fffbef 100%);
+}
+
+.card-gradient-purple {
+  background: linear-gradient(135deg, #f5f0ff 0%, #faf5ff 100%);
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* Text Styles */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shadow Classes */
+.shadow-cute {
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.15);
+}
+
+.shadow-double {
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.2),
+               0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Decorative Elements */
+.decoration-bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.bubble-1 {
+  width: 120px;
+  height: 120px;
+  background: var(--color-pink);
+  top: -60px;
+  right: -60px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.bubble-2 {
+  width: 80px;
+  height: 80px;
+  background: var(--color-blue);
+  bottom: -40px;
+  left: 20%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-cute {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-light-pink);
+  border-top-color: var(--color-pink);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
